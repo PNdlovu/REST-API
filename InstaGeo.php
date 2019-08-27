@@ -1,7 +1,7 @@
 <?php
 if (!empty($_GET['location'])) {
     /**
-     * Here we build the url we'll be using to access the google maps api
+     * url to access the google maps api
      */
     $maps_url = 'https://' .
         'maps.googleapis.com/' .
@@ -12,14 +12,14 @@ if (!empty($_GET['location'])) {
     $lat = $maps_array['results'][0]['geometry']['location']['lat'];
     $lng = $maps_array['results'][0]['geometry']['location']['lng'];
     /**
-     * Time to make our Instagram api request. We'll build the url using the
+     * Instagram api request. build the url using the
      * coordinate values returned by the google maps api
      */
     $url = 'https://' .
         'api.instagram.com/v1/media/search' .
         '?lat=' . $lat .
         '&lng=' . $lng .
-        '&client_id= 44b8118dac7f4599a27c1a7c1accdcd2'; //replace "CLIENT-ID"
+        '&client_id= 44b8118dac7f4599a27c1a7c1accdcd2'; //my client API create yours under developer tools
     $json = file_get_contents($url);
     $array = json_decode($json, true);
 }
